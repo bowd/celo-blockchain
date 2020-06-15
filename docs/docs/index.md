@@ -1,24 +1,17 @@
 ---
-title: Geth Documentation
+title: Celo Documentation
 root: ..
 ---
 
-You have found the user manual for geth, the Go language implementation of Ethereum.
+You have found the user manual for celo-blockchain, the Go language implementation of the Celo Protocol, based on geth.
 
-* [Getting Started Guide](./getting-started)
-* [Installation Instructions](./install-and-build/installing-celo-blockchain)
 * [JSON-RPC Server](./rpc/server)
 * [JavaScript Console](./interface/javascript-console)
 
-For the Go API reference and developer documentation head over to
+For the Geth Go API reference and developer documentation head over to
 [GoDoc](https://godoc.org/github.com/ethereum/go-ethereum).
 
-### Other Ethereum Documentation
+### Other Celo Documentation
 
-For generic Ethereum-related information, check the **[Ethereum
-Wiki](https://github.com/ethereum/wiki/wiki)**.
+For generic Celo documentation, check the **[Celo docs](https://docs.celo.org)**.
 
-* [Ethereum Whitepaper](https://github.com/ethereum/wiki/wiki/White-Paper)
-* [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
-* [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org)
-* [Peer-to-peer Networking Specifications](https://github.com/ethereum/devp2p/blob/master/README.md)
