@@ -6,7 +6,7 @@ root: ..
 You have found the user manual for geth, the Go language implementation of Ethereum.
 
 * [Getting Started Guide](./getting-started)
-* [Installation Instructions](./install-and-build/installing-geth)
+* [Installation Instructions](./install-and-build/installing-celo-blockchain)
 * [JSON-RPC Server](./rpc/server)
 * [JavaScript Console](./interface/javascript-console)
 

@@ -27,6 +27,7 @@ collections_dir: docs
 collections:
   getting-started:
     output: true
+    permalink: docs/:collection/:slug
     caption: Getting Started
     sidebar_index: 1
     frontpage: _getting-started/index.md
