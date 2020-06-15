@@ -5,7 +5,7 @@ theme: minima
 keep_files:
   - static
 
-favicon: /static/images/favicon.png
+favicon: /static/images/favicon.ico
 
 defaults:
   - scope:

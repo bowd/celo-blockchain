@@ -26,7 +26,7 @@ common-js:
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% include link.html url='' %}">Go Ethereum</a>
+          <a class="navbar-brand" href="{% include link.html url='' %}">Celo Blockchain</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -35,6 +35,8 @@ common-js:
               <li><a href="{{target |strip }}">{{ link.first }}</a></li>
             {% endfor %}
           </ul>
+          <!-- TODO: Re-enable search when we have client docs served from somewhere -->
+          <!--
           <form class="navbar-form pull-right" role="search" method="get" action="https://duckduckgo.com/">
             <input type="hidden" name="sites" value="geth.ethereum.org">
             <input type="hidden" name="kz" value="-1">
@@ -45,6 +47,7 @@ common-js:
               </span>
             </div>
           </form>
+          -->
         </div>
       </div>
     </nav>
@@ -52,11 +55,11 @@ common-js:
     <hr/>
     <footer class="container">
       {%- capture gh_link -%}
-      https://github.com/ethereum/go-ethereum/blob/gh-pages/
+      https://github.com/celo-org/celo-blockchain/blob/gh-pages/
       {%- if page.collection -%}{{ site.collections_dir }}/{%- endif -%}
       {{- page.path -}}
       {%- endcapture -%}
-      <p>&copy; 2013–2019. The go-ethereum Authors. <a href="{{ gh_link }}">Edit this page.</a></p>
+      <p>&copy; 2015–2020. The celo-blockchain Authors. <a href="{{ gh_link }}">Edit this page.</a></p>
     </footer>
   </body>
 </html>

@@ -1,9 +1,9 @@
 ---
-title: Installing Geth
+title: Installing Celo Blockchain
 sort_key: A
 ---
 
-You can install the Go implementation of Ethereum using a variety of ways. These include installing it via your favorite package manager; downloading a standalone pre-built bundle; running as a docker container; or building it yourself. This document details all of the possibilities to get you joining the Ethereum network using whatever means you prefer.
+You can install the Celo Blockchain client using a variety of ways. These include installing it via your favorite package manager; downloading a standalone pre-built bundle; running as a docker container; or building it yourself. This document details all of the possibilities to get you joining the Ethereum network using whatever means you prefer.
 
 {:toc}
 

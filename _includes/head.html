@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}Go Ethereum</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}Celo Blockchain</title>
     <!-- debug root:{% include link.html url="/debug-path" %} -->
 
     <link rel="icon" type="image/png" href="{% include link.html url=site.favicon %}" />
@@ -23,6 +23,7 @@
     <script src="{{ target | strip }}"></script>
 {% endfor %}
   <!-- Matomo -->
+  <!-- TODO: What analytics do we want?
   <script type="text/javascript">
     var _paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -37,5 +38,6 @@
     })();
   </script>
   <noscript><p><img src="https://matomo.ethereum.org/matomo.php?idsite=22&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+  -->
   <!-- End Matomo Code -->
 </head>
