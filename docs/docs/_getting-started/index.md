@@ -1,6 +1,6 @@
 ---
 title: Getting Started with Geth
-permalink: docs/getting-started
+permalink: docs/getting-started/geth
 sort_key: A
 ---
 
