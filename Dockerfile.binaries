@@ -1,0 +1,54 @@
+# How to test changes to this file
+# docker build -f Dockerfile -t gcr.io/celo-testnet/geth:$USER .
+# To locally run that image
+# docker rm geth_container ; docker run --name geth_container gcr.io/celo-testnet/geth:$USER
+# and connect to it with
+# docker exec -t -i geth_container /bin/sh
+#
+# Once you are satisfied, build the image using
+# export COMMIT_SHA=$(git rev-parse HEAD)
+# docker build -f Dockerfile --build-arg COMMIT_SHA=$COMMIT_SHA -t gcr.io/celo-testnet/geth:$COMMIT_SHA .
+#
+# push the image to the cloud
+# docker push gcr.io/celo-testnet/geth:$COMMIT_SHA
+#
+# To use this image for testing, modify GETH_NODE_DOCKER_IMAGE_TAG in celo-monorepo/.env file
+
+# Build Geth binaries in the xgo builder container
+FROM techknowlogick/xgo as xgobuilder
+
+# We need a newer version of mingw, backported to Bionic
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y  --no-install-recommends software-properties-common apt-utils
+RUN add-apt-repository -y ppa:mati865/mingw-w64
+RUN apt update && apt -y upgrade
+
+ADD . /go/src/github.com/ethereum/go-ethereum
+WORKDIR /go/src/github.com/ethereum/go-ethereum
+
+ENV go=1.13
+ARG build_targets
+
+RUN go run build/ci.go xgo -- --go=$go --targets=$build_targets -v ./cmd/geth
+
+### linux-386 ###
+# ### linux-amd64 ###
+# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
+# RUN go run build/ci.go xgo -- --go=$GO --targets=linux/amd64 -v ./cmd/geth
+# ### darwin-386 ###
+# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
+# RUN go run build/ci.go xgo -- --go=$GO --targets=darwin-10.11/386 -v ./cmd/geth
+# ### darwin-amd64 ###
+# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
+# RUN go run build/ci.go xgo -- --go=$GO --targets=darwin-10.11/amd64 -v ./cmd/geth
+
+#### windows-386 ###
+# RUN rm -rf /deps && rm -rf $BLS_TARGET
+# RUN go run build/ci.go xgo -- --go=$GO --targets=windows/386 -v ./cmd/geth
+#### windows-amd64 ###
+#RUN rm -rf /deps && rm -rf $BLS_TARGET
+#RUN go run build/ci.go xgo -- --go=$GO --targets=darwin/amd64 -v ./cmd/geth
+
+
+ENTRYPOINT /bin/bash
+
