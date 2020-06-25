@@ -26,29 +26,12 @@ RUN apt update && apt -y upgrade
 ADD . /go/src/github.com/ethereum/go-ethereum
 WORKDIR /go/src/github.com/ethereum/go-ethereum
 
-ENV go=1.13
-ARG build_targets
+ENV GO=1.13
+ARG BUILD_TARGETS
+ARG COMMIT_SHA
+ARG ALLTOOLS
+ENV ALLTOOLS_COMMAND_SEGMENT=""
+RUN if [ "$ALLTOOLS" = "true" ]; then export ALLTOOLS_COMMAND_SEGMENT="--alltools"; fi
 
-RUN go run build/ci.go xgo -- --go=$go --targets=$build_targets -v ./cmd/geth
-
-### linux-386 ###
-# ### linux-amd64 ###
-# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
-# RUN go run build/ci.go xgo -- --go=$GO --targets=linux/amd64 -v ./cmd/geth
-# ### darwin-386 ###
-# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
-# RUN go run build/ci.go xgo -- --go=$GO --targets=darwin-10.11/386 -v ./cmd/geth
-# ### darwin-amd64 ###
-# RUN rm -rf /deps && rm -rf $BLS_BUILD_TARGET
-# RUN go run build/ci.go xgo -- --go=$GO --targets=darwin-10.11/amd64 -v ./cmd/geth
-
-#### windows-386 ###
-# RUN rm -rf /deps && rm -rf $BLS_TARGET
-# RUN go run build/ci.go xgo -- --go=$GO --targets=windows/386 -v ./cmd/geth
-#### windows-amd64 ###
-#RUN rm -rf /deps && rm -rf $BLS_TARGET
-#RUN go run build/ci.go xgo -- --go=$GO --targets=darwin/amd64 -v ./cmd/geth
-
-
-ENTRYPOINT /bin/bash
-
+RUN echo $COMMIT_SHA > /version.txt
+RUN go run build/ci.go xgo $ALLTOOLS_COMMAND_SEGMENT -- --go=$GO --targets=$BUILD_TARGETS -v ./cmd/geth
